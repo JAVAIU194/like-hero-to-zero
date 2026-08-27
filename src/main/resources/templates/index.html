@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Like Hero To Zero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f0f7f0;
+        }
+        h1 { color: #2d6a2d; }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+            border: 2px solid #2d6a2d;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #2d6a2d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            border-left: 5px solid #2d6a2d;
+        }
+        .error { color: red; margin-top: 20px; }
+    </style>
+</head>
+<body>
+<h1>🌍 Like Hero To Zero</h1>
+<p>CO2-Emissionen weltweit nachschlagen</p>
+
+<form th:action="@{/}" method="get">
+    <input type="text" name="country"
+           placeholder="Land eingeben (z.B. Germany)"
+           th:value="${param.country}"/>
+    <button type="submit">Suchen</button>
+</form>
+
+<div class="result" th:if="${emission}">
+    <h2 th:text="${countryName}"></h2>
+    <p>Neuester CO2-Ausstoß:
+        <strong th:text="${emission.co2Kt} + ' kt'"></strong>
+        (Jahr: <span th:text="${emission.year}"></span>)
+    </p>
+</div>
+
+<p class="error" th:if="${error}" th:text="${error}"></p>
+
+<hr style="margin-top: 50px;">
+<p><a href="/login">🔬 Wissenschaftler:innen Login</a></p>
+</body>
+</html>
