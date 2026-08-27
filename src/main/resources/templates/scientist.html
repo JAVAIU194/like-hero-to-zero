@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wissenschaftler:innen – Like Hero To Zero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f0f7f0;
+        }
+        h1 { color: #2d6a2d; }
+        input, select {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 16px 0;
+            font-size: 16px;
+            border: 2px solid #2d6a2d;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2d6a2d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .success {
+            padding: 15px;
+            background-color: #d4edda;
+            border: 1px solid #2d6a2d;
+            border-radius: 5px;
+            color: #2d6a2d;
+            margin-bottom: 20px;
+        }
+        label { font-weight: bold; }
+    </style>
+</head>
+<body>
+<h1>🔬 Neue CO2-Daten eintragen</h1>
+
+<div class="success" th:if="${success}" th:text="${success}"></div>
+
+<form th:action="@{/scientist/add}" method="post">
+    <label>Land:</label>
+    <input type="text" name="countryName" placeholder="z.B. Brazil" required/>
+
+    <label>Jahr:</label>
+    <input type="number" name="year" placeholder="z.B. 2021" required/>
+
+    <label>CO2-Ausstoß (in kt):</label>
+    <input type="number" name="co2Kt" step="0.1" placeholder="z.B. 450000.0" required/>
+
+    <button type="submit">💾 Daten speichern</button>
+</form>
+
+<br>
+<a href="/">← Zurück zur Startseite</a>
+</body>
+</html>

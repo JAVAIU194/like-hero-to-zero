@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login – Like Hero To Zero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #f0f7f0;
+        }
+        h1 { color: #2d6a2d; }
+        input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 2px solid #2d6a2d;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2d6a2d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+<h1>🔬 Wissenschaftler:innen Login</h1>
+<p th:if="${param.error}" class="error">Ungültige Anmeldedaten!</p>
+<form th:action="@{/login}" method="post">
+    <input type="text" name="username" placeholder="Benutzername"/>
+    <input type="password" name="password" placeholder="Passwort"/>
+    <button type="submit">Einloggen</button>
+</form>
+<p><a href="/">← Zurück zur Startseite</a></p>
+</body>
+</html>
